@@ -6,6 +6,8 @@ import {
   styled,
   alpha,
   Paper,
+  type SxProps,
+  type Theme,
 } from '@mui/material';
 import { Highlight, themes } from 'prism-react-renderer';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -23,9 +25,10 @@ interface Props {
   enableCopyButton?: boolean;
   style?: CSSProperties;
   margin?: string;
+  paperSxProps?: SxProps<Theme>;
 }
 
-export const SampleCodeSnippet = (props: Props) => {
+export const SampleCodeSnippet = ({ paperSxProps, ...props }: Props) => {
   const theme = useTheme();
   const [isCopied, setIsCopied] = useState(false);
 
@@ -66,6 +69,7 @@ export const SampleCodeSnippet = (props: Props) => {
         boxShadow: props.enableCopyButton === false ? 'none' : undefined,
         backgroundImage: 'none',
         backgroundColor: 'transparent',
+        ...paperSxProps,
       }}
     >
       <Highlight

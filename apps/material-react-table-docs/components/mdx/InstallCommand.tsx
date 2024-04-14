@@ -31,6 +31,11 @@ export const InstallCommand = ({
         className="language-bash"
         margin="0"
         style={{ overflowX: 'hidden' }}
+        paperSxProps={{
+          '& .token-line': {
+            overflowX: 'auto',
+          },
+        }}
       >
         {tab === 'npm'
           ? `npm i ${packagesString}`
