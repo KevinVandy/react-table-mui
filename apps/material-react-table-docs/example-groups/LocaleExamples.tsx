@@ -6,6 +6,7 @@ import BG_Table from '../examples/localization-i18n-bg';
 import CS_Table from '../examples/localization-i18n-cs';
 import DA_Table from '../examples/localization-i18n-da';
 import DE_Table from '../examples/localization-i18n-de';
+import EL_Table from '../examples/localization-i18n-el';
 import EN_Table from '../examples/localization-i18n-en';
 import ES_Table from '../examples/localization-i18n-es';
 import ET_Table from '../examples/localization-i18n-et';
@@ -47,6 +48,7 @@ const supportedLocales = [
   'cs',
   'da',
   'de',
+  'el',
   'en',
   'es',
   'et',
@@ -125,6 +127,7 @@ const LocaleExamples = () => {
       {currentLocale === 'cs' && <CS_Table />}
       {currentLocale === 'da' && <DA_Table />}
       {currentLocale === 'de' && <DE_Table />}
+      {currentLocale === 'el' && <EL_Table />}
       {currentLocale === 'en' && <EN_Table />}
       {currentLocale === 'es' && <ES_Table />}
       {currentLocale === 'et' && <ET_Table />}
