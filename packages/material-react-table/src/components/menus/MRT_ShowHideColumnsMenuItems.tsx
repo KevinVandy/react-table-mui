@@ -16,7 +16,7 @@ import {
   type MRT_RowData,
   type MRT_TableInstance,
 } from '../../types';
-import { reorderColumn } from '../../utils/column.utils';
+import { reorderColumn, reorderColumnPinning } from '../../utils/column.utils';
 import { getCommonTooltipProps } from '../../utils/style.utils';
 import { parseFromValuesOrFunc } from '../../utils/utils';
 import { MRT_ColumnPinningButtons } from '../buttons/MRT_ColumnPinningButtons';
@@ -51,8 +51,9 @@ export const MRT_ShowHideColumnsMenuItems = <TData extends MRT_RowData>({
       mrtTheme: { draggingBorderColor },
     },
     setColumnOrder,
+    setColumnPinning,
   } = table;
-  const { columnOrder } = getState();
+  const { columnOrder, columnPinning } = getState();
   const { columnDef } = column;
   const { columnDefType } = columnDef;
 
@@ -86,6 +87,20 @@ export const MRT_ShowHideColumnsMenuItems = <TData extends MRT_RowData>({
     setHoveredColumn(null);
     if (hoveredColumn) {
       setColumnOrder(reorderColumn(column, hoveredColumn, columnOrder));
+
+      if (
+        hoveredColumn?.getIsPinned?.() &&
+        column?.getIsPinned?.() &&
+        hoveredColumn?.id
+      ) {
+        const newColumnPinning = reorderColumnPinning(
+          column,
+          hoveredColumn as MRT_Column<TData>,
+          columnPinning,
+        );
+
+        setColumnPinning(newColumnPinning);
+      }
     }
   };
 

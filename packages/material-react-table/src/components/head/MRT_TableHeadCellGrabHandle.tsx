@@ -5,7 +5,7 @@ import {
   type MRT_RowData,
   type MRT_TableInstance,
 } from '../../types';
-import { reorderColumn } from '../../utils/column.utils';
+import { reorderColumn, reorderColumnPinning } from '../../utils/column.utils';
 import { parseFromValuesOrFunc } from '../../utils/utils';
 import { MRT_GrabHandleButton } from '../buttons/MRT_GrabHandleButton';
 
@@ -28,9 +28,11 @@ export const MRT_TableHeadCellGrabHandle = <TData extends MRT_RowData>({
     setColumnOrder,
     setDraggingColumn,
     setHoveredColumn,
+    setColumnPinning,
   } = table;
   const { columnDef } = column;
-  const { columnOrder, draggingColumn, hoveredColumn } = getState();
+  const { columnOrder, draggingColumn, hoveredColumn, columnPinning } =
+    getState();
 
   const iconButtonProps = {
     ...parseFromValuesOrFunc(muiColumnDragHandleProps, { column, table }),
@@ -64,9 +66,27 @@ export const MRT_TableHeadCellGrabHandle = <TData extends MRT_RowData>({
       hoveredColumn &&
       hoveredColumn?.id !== draggingColumn?.id
     ) {
-      setColumnOrder(
-        reorderColumn(column, hoveredColumn as MRT_Column<TData>, columnOrder),
+      const newColumnOrder = reorderColumn(
+        column,
+        hoveredColumn as MRT_Column<TData>,
+        columnOrder,
       );
+
+      if (
+        hoveredColumn?.getIsPinned?.() &&
+        draggingColumn?.getIsPinned?.() &&
+        hoveredColumn?.id
+      ) {
+        const newColumnPinning = reorderColumnPinning(
+          column,
+          hoveredColumn as MRT_Column<TData>,
+          columnPinning,
+        );
+
+        setColumnPinning(newColumnPinning);
+      }
+
+      setColumnOrder(newColumnOrder);
     }
     setDraggingColumn(null);
     setHoveredColumn(null);
