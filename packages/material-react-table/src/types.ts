@@ -406,19 +406,20 @@ export interface MRT_TableState<TData extends MRT_RowData> extends TableState {
   showToolbarDropZone: boolean;
 }
 
-export type MRT_ColumnDef<TData extends MRT_RowData, TValue = unknown> = Omit<
-  ColumnDef<TData, TValue>,
-  | 'accessorKey'
-  | 'aggregatedCell'
-  | 'aggregationFn'
-  | 'cell'
-  | 'columns'
-  | 'filterFn'
-  | 'footer'
-  | 'header'
-  | 'id'
-  | 'sortingFn'
-> & {
+export interface MRT_ColumnDef<TData extends MRT_RowData, TValue = unknown>
+  extends Omit<
+    ColumnDef<TData, TValue>,
+    | 'accessorKey'
+    | 'aggregatedCell'
+    | 'aggregationFn'
+    | 'cell'
+    | 'columns'
+    | 'filterFn'
+    | 'footer'
+    | 'header'
+    | 'id'
+    | 'sortingFn'
+  > {
   AggregatedCell?: (props: {
     cell: MRT_Cell<TData, TValue>;
     column: MRT_Column<TData, TValue>;
@@ -682,7 +683,7 @@ export type MRT_ColumnDef<TData extends MRT_RowData, TValue = unknown> = Omit<
   }) => ReactNode[];
   sortingFn?: MRT_SortingFn<TData>;
   visibleInShowHideMenu?: boolean;
-};
+}
 
 export type MRT_DisplayColumnDef<
   TData extends MRT_RowData,
@@ -802,19 +803,20 @@ export type MRT_DisplayColumnIds =
  * See the full props list on the official docs site:
  * @link https://www.material-react-table.com/docs/api/props
  */
-export type MRT_TableOptions<TData extends MRT_RowData> = Omit<
-  Partial<TableOptions<TData>>,
-  | 'columns'
-  | 'data'
-  | 'defaultColumn'
-  | 'enableRowSelection'
-  | 'expandRowsFn'
-  | 'getRowId'
-  | 'globalFilterFn'
-  | 'initialState'
-  | 'onStateChange'
-  | 'state'
-> & {
+export interface MRT_TableOptions<TData extends MRT_RowData>
+  extends Omit<
+    Partial<TableOptions<TData>>,
+    | 'columns'
+    | 'data'
+    | 'defaultColumn'
+    | 'enableRowSelection'
+    | 'expandRowsFn'
+    | 'getRowId'
+    | 'globalFilterFn'
+    | 'initialState'
+    | 'onStateChange'
+    | 'state'
+  > {
   columnFilterDisplayMode?: 'custom' | 'popover' | 'subheader';
   columnFilterModeOptions?: Array<
     LiteralUnion<string & MRT_FilterOption>
@@ -1293,4 +1295,4 @@ export type MRT_TableOptions<TData extends MRT_RowData> = Omit<
    * Manage state externally any way you want, then pass it back into MRT.
    */
   state?: Partial<MRT_TableState<TData>>;
-};
+}
