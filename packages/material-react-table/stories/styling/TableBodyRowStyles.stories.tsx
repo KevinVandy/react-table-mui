@@ -24,8 +24,18 @@ const columns: MRT_ColumnDef<(typeof data)[0]>[] = [
   {
     accessorKey: 'address',
     header: 'Address',
+    Cell: ({ cell }) => (
+      <table>
+        <tbody>
+          <tr>
+            <td>{cell.getValue<string>()}</td>
+          </tr>
+        </tbody>
+      </table>
+    )
   },
 ];
+
 const data = [...Array(21)].map(() => ({
   address: faker.location.streetAddress(),
   age: faker.number.int(80),

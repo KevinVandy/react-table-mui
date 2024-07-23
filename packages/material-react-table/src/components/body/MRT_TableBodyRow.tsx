@@ -184,7 +184,7 @@ export const MRT_TableBodyRow = <TData extends MRT_RowData>({
           ...tableRowProps?.style,
         }}
         sx={(theme: Theme) => ({
-          '&:hover td:after': cellHighlightColorHover
+          '&:hover > td:after': cellHighlightColorHover
             ? {
                 backgroundColor: alpha(cellHighlightColorHover, 0.3),
                 ...commonCellBeforeAfterStyles,
