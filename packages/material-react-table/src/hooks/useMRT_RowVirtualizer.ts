@@ -65,7 +65,7 @@ export const useMRT_RowVirtualizer = <
     ...rowVirtualizerProps,
   }) as unknown as MRT_RowVirtualizer<TScrollElement, TItemElement>;
 
-  rowVirtualizer.virtualRows = rowVirtualizer.getVirtualItems();
+  rowVirtualizer.virtualRows = rowVirtualizer.getVirtualItems() as any;
 
   if (rowVirtualizerInstanceRef) {
     //@ts-ignore

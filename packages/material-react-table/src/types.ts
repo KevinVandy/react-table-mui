@@ -114,7 +114,7 @@ export type MRT_PaginationState = PaginationState;
 export type MRT_RowSelectionState = RowSelectionState;
 export type MRT_SortingState = SortingState;
 export type MRT_Updater<T> = Updater<T>;
-export type MRT_VirtualItem = VirtualItem;
+export type MRT_VirtualItem<T extends Element = Element> = VirtualItem<T>;
 export type MRT_VisibilityState = VisibilityState;
 
 export type MRT_VirtualizerOptions<

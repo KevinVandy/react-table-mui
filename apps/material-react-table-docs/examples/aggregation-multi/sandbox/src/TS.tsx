@@ -12,7 +12,7 @@ const localeStringOptions = {
   currency: 'USD',
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
-};
+} as const;
 
 const Example = () => {
   const columns = useMemo<MRT_ColumnDef<Person>[]>(

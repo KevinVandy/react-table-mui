@@ -18,7 +18,7 @@ export interface MRT_TableDetailPanelProps<TData extends MRT_RowData>
   rowVirtualizer?: MRT_RowVirtualizer;
   staticRowIndex: number;
   table: MRT_TableInstance<TData>;
-  virtualRow?: MRT_VirtualItem;
+  virtualRow?: MRT_VirtualItem<HTMLTableRowElement>;
 }
 
 export const MRT_TableDetailPanel = <TData extends MRT_RowData>({
