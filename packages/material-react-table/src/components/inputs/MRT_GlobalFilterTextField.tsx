@@ -94,7 +94,7 @@ export const MRT_GlobalFilterTextField = <TData extends MRT_RowData>({
     >
       <TextField
         inputProps={{
-          autoComplete: 'new-password', // disable autocomplete and autofill
+          autoComplete: 'off',
           ...textFieldProps.inputProps,
         }}
         onChange={handleChange}

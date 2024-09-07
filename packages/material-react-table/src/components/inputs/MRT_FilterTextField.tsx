@@ -316,7 +316,7 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
     ) : null,
     inputProps: {
       'aria-label': filterPlaceholder,
-      autoComplete: 'new-password', // disable autocomplete and autofill
+      autoComplete: 'off',
       disabled: !!filterChipLabel,
       sx: {
         textOverflow: 'ellipsis',
