@@ -11,7 +11,9 @@ import {
   type MRT_Header,
   type MRT_RowData,
   type MRT_TableInstance,
+  type MRT_ColumnPinningState,
 } from '../types';
+import { reorderArray } from './utils';
 
 export const getColumnId = <TData extends MRT_RowData>(
   columnDef: MRT_ColumnDef<TData>,
@@ -106,13 +108,43 @@ export const reorderColumn = <TData extends MRT_RowData>(
   if (draggedColumn.getCanPin()) {
     draggedColumn.pin(targetColumn.getIsPinned());
   }
-  const newColumnOrder = [...columnOrder];
-  newColumnOrder.splice(
-    newColumnOrder.indexOf(targetColumn.id),
-    0,
-    newColumnOrder.splice(newColumnOrder.indexOf(draggedColumn.id), 1)[0],
+  return reorderArray(
+    columnOrder,
+    columnOrder.indexOf(draggedColumn.id),
+    columnOrder.indexOf(targetColumn.id),
   );
-  return newColumnOrder;
+};
+
+export const reorderColumnPinning = <TData extends MRT_RowData>(
+  draggedColumn: MRT_Column<TData>,
+  targetColumn: MRT_Column<TData>,
+  columnPinning: MRT_ColumnPinningState,
+): MRT_ColumnPinningState => {
+  const newColumnPinning = { ...columnPinning };
+
+  const draggedPosition = draggedColumn.getIsPinned();
+  const targetPosition = targetColumn.getIsPinned();
+
+  // Only reordering pins when dragged column is in the same position as target column
+  if (
+    !draggedPosition ||
+    !targetPosition ||
+    draggedPosition !== targetPosition
+  ) {
+    return newColumnPinning;
+  }
+
+  const pinningToReorder = [...(columnPinning?.[targetPosition] ?? [])];
+
+  const reorderedPinning = reorderArray(
+    pinningToReorder,
+    pinningToReorder.indexOf(draggedColumn.id),
+    pinningToReorder.indexOf(targetColumn.id),
+  );
+
+  newColumnPinning[targetPosition] = reorderedPinning;
+
+  return newColumnPinning;
 };
 
 export const getDefaultColumnFilterFn = <TData extends MRT_RowData>(

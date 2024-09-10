@@ -21,3 +21,17 @@ export const getValueAndLabel = (
   }
   return { label, value };
 };
+
+export function reorderArray<T>(
+  arr: T[],
+  sourceIndex: number,
+  destinationIndex: number,
+): T[] {
+  const reorderedArr = [...arr];
+  reorderedArr.splice(
+    destinationIndex,
+    0,
+    reorderedArr.splice(sourceIndex, 1)[0],
+  );
+  return reorderedArr;
+}
