@@ -73,7 +73,7 @@ export const useMRT_Effects = <TData extends MRT_RowData>(
     if (firstVisibleRowIndex >= totalRowCount) {
       table.setPageIndex(Math.ceil(totalRowCount / pageSize) - 1);
     }
-  }, [totalRowCount]);
+  }, [totalRowCount, enablePagination, isLoading, showSkeletons]);
 
   //turn off sort when global filter is looking for ranked results
   const appliedSort = useRef<MRT_SortingState>(sorting);
