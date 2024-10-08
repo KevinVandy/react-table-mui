@@ -41,7 +41,7 @@ export const MRT_FilterRangeSlider = <TData extends MRT_RowData>({
   let [min, max] =
     sliderProps.min !== undefined && sliderProps.max !== undefined
       ? [sliderProps.min, sliderProps.max]
-      : (column.getFacetedMinMaxValues() ?? [0, 1]);
+      : column.getFacetedMinMaxValues() ?? [0, 1];
 
   //fix potential TanStack Table bugs where min or max is an array
   if (Array.isArray(min)) min = min[0];

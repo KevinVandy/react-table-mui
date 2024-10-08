@@ -93,6 +93,5 @@ export const MRT_Localization_NO: MRT_Localization = {
   unpinAll: 'Løsne alle',
 
   ungroupByColumn: 'Oppgrupper etter {column}',
-  selectedCountOfRowCountRowsSelected:
-    '{selectedCount} av {rowCount} rader valgt',
+  selectedCountOfRowCountRowsSelected: '{selected} av {count} rader valgt',
 };

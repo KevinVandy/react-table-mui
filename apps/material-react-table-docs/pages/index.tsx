@@ -7,8 +7,6 @@ import {
   Stack,
   Typography,
   Link as MuiLink,
-  Alert,
-  AlertTitle,
 } from '@mui/material';
 import { ArrowForwardIos } from '@mui/icons-material';
 import { HomeCards } from '../components/mdx/HomeCards';
@@ -26,15 +24,6 @@ const HomePage = () => {
   return (
     <>
       <Stack sx={{ maxWidth: '1200px', m: 'auto' }}>
-        <Alert severity="warning" variant="outlined" sx={{ mt: '12px' }}>
-          <AlertTitle>
-            Material React Table V3 was released September 5th, 2024
-          </AlertTitle>
-          <Typography>Upgrade to MRT V3 and Material UI V6 Today!</Typography>
-          <MuiLink href="https://www.material-react-table.com/docs/getting-started/migrating-to-v3">
-            View the V3 Migration Guide here.
-          </MuiLink>
-        </Alert>
         <Typography
           sx={{
             textAlign: 'center',

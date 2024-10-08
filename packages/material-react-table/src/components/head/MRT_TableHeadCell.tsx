@@ -163,18 +163,9 @@ export const MRT_TableHeadCell = <TData extends MRT_RowData>({
             ? 'right'
             : 'left'
       }
-      aria-sort={
-        column.getIsSorted()
-          ? column.getIsSorted() === 'asc'
-            ? 'ascending'
-            : 'descending'
-          : 'none'
-      }
       colSpan={header.colSpan}
-      data-can-sort={column.getCanSort() || undefined}
       data-index={staticColumnIndex}
       data-pinned={!!isColumnPinned || undefined}
-      data-sort={column.getIsSorted() || undefined}
       onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       ref={(node: HTMLTableCellElement) => {
@@ -231,7 +222,7 @@ export const MRT_TableHeadCell = <TData extends MRT_RowData>({
     >
       {header.isPlaceholder
         ? null
-        : (tableCellProps.children ?? (
+        : tableCellProps.children ?? (
             <Box
               className="Mui-TableHeadCell-Content"
               sx={{
@@ -321,7 +312,7 @@ export const MRT_TableHeadCell = <TData extends MRT_RowData>({
                 <MRT_TableHeadCellResizeHandle header={header} table={table} />
               )}
             </Box>
-          ))}
+          )}
       {columnFilterDisplayMode === 'subheader' && column.getCanFilter() && (
         <MRT_TableHeadCellFilterContainer header={header} table={table} />
       )}

@@ -42,7 +42,6 @@ export const MRT_EditCellTextField = <TData extends MRT_RowData>({
   const isEditing = editingRow?.id === row.id;
 
   const [value, setValue] = useState(() => cell.getValue<string>());
-  const [completesComposition, setCompletesComposition] = useState(true);
 
   const textFieldProps: TextFieldProps = {
     ...parseFromValuesOrFunc(muiEditTextFieldProps, {
@@ -95,7 +94,7 @@ export const MRT_EditCellTextField = <TData extends MRT_RowData>({
 
   const handleEnterKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     textFieldProps.onKeyDown?.(event);
-    if (event.key === 'Enter' && !event.shiftKey && completesComposition) {
+    if (event.key === 'Enter' && !event.shiftKey) {
       editInputRefs.current[column.id]?.blur();
     }
   };
@@ -165,8 +164,6 @@ export const MRT_EditCellTextField = <TData extends MRT_RowData>({
         textFieldProps?.onClick?.(e);
       }}
       onKeyDown={handleEnterKeyDown}
-      onCompositionStart={() => setCompletesComposition(false)}
-      onCompositionEnd={() => setCompletesComposition(true)}
     >
       {textFieldProps.children ??
         selectOptions?.map((option) => {

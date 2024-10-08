@@ -79,13 +79,13 @@ export const MRT_TableFooterCell = <TData extends MRT_RowData>({
       {tableCellProps.children ??
         (footer.isPlaceholder
           ? null
-          : (parseFromValuesOrFunc(columnDef.Footer, {
+          : parseFromValuesOrFunc(columnDef.Footer, {
               column,
               footer,
               table,
             }) ??
             columnDef.footer ??
-            null))}
+            null)}
     </TableCell>
   );
 };

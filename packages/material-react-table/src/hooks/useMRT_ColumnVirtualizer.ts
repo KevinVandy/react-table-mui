@@ -91,7 +91,7 @@ export const useMRT_ColumnVirtualizer = <
   }) as unknown as MRT_ColumnVirtualizer<TScrollElement, TItemElement>;
 
   const virtualColumns = columnVirtualizer.getVirtualItems();
-  columnVirtualizer.virtualColumns = virtualColumns as any;
+  columnVirtualizer.virtualColumns = virtualColumns;
   const numColumns = virtualColumns.length;
 
   if (numColumns) {

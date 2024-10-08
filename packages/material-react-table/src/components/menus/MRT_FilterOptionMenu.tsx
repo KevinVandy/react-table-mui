@@ -254,7 +254,7 @@ export const MRT_FilterOptionMenu = <TData extends MRT_RowData>({
       {...rest}
     >
       {(header && column && columnDef
-        ? (columnDef.renderColumnFilterModeMenuItems?.({
+        ? columnDef.renderColumnFilterModeMenuItems?.({
             column: column as any,
             internalFilterOptions,
             onSelectFilterMode: handleSelectFilterMode,
@@ -265,7 +265,7 @@ export const MRT_FilterOptionMenu = <TData extends MRT_RowData>({
             internalFilterOptions,
             onSelectFilterMode: handleSelectFilterMode,
             table,
-          }))
+          })
         : renderGlobalFilterModeMenuItems?.({
             internalFilterOptions,
             onSelectFilterMode: handleSelectFilterMode,

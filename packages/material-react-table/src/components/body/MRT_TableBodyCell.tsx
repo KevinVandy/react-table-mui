@@ -287,7 +287,7 @@ export const MRT_TableBodyCell = <TData extends MRT_RowData>({
       {tableCellProps.children ?? (
         <>
           {cell.getIsPlaceholder() ? (
-            (columnDef.PlaceholderCell?.({ cell, column, row, table }) ?? null)
+            columnDef.PlaceholderCell?.({ cell, column, row, table }) ?? null
           ) : showSkeletons !== false && (isLoading || showSkeletons) ? (
             <Skeleton
               animation="wave"

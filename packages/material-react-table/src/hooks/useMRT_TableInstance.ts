@@ -99,10 +99,10 @@ export const useMRT_TableInstance = <TData extends MRT_RowData>(
         ).map((col) => ({
           [getColumnId(col)]:
             col.filterFn instanceof Function
-              ? (col.filterFn.name ?? 'custom')
-              : (col.filterFn ??
+              ? col.filterFn.name ?? 'custom'
+              : col.filterFn ??
                 initialState?.columnFilterFns?.[getColumnId(col)] ??
-                getDefaultColumnFilterFn(col)),
+                getDefaultColumnFilterFn(col),
         })),
       ),
     );

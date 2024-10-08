@@ -1071,7 +1071,7 @@ export const tableOptions: TableOption[] = [
     linkText: 'Memoize Components Guide',
     required: false,
     source: 'MRT',
-    type: `'cells' | 'rows' | 'table-body'`,
+    type: `'cell' | 'row' | 'table-body'`,
   },
   {
     tableOption: 'mergeOptions',

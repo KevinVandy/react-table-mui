@@ -1,42 +1,13 @@
 import Head from 'next/head';
-import { Typography, Link as MuiLink, Alert, AlertTitle } from '@mui/material';
 
 <Head>
   <title>{'MRT V2 Changelog - Material React Table V2 Docs'}</title>
   <meta name="description" content="Material React Table V2 Changelog" />
 </Head>
 
-<Alert severity="warning" variant="outlined" sx={{ mt: '12px' }}>
-  <AlertTitle>
-    Material React Table V3 was released September 5th, 2024
-  </AlertTitle>
-  <Typography>Upgrade to MRT V3 and Material UI V6 Today!</Typography>
-  <MuiLink href="https://www.material-react-table.com/docs/getting-started/migrating-to-v3">
-    View the V3 Migration Guide here.
-  </MuiLink>
-</Alert>
-
 ## MRT V2 Changelog
 
 > Note: As of v2.12.0, the React and ReactDom peer dependencies have been moved back down to React v17 in order to help more people upgrade to MRT v2 without having to upgrade to React v18.
-
-### Version 2.13.3 - 2024-09-04
-
-- Fixed `no` locale
-
-### Version 2.13.2 - 2024-08-30
-
-- Upgraded to TanStack Table v8.20.5
-- Upgraded to TanStack Virtual v3.10.6
-- Added sorting aria and data- attributes to table header cells
-- Added better support for edit textfield composition events
-
-### Version 2.13.1 - 2024-07-28
-
-- Upgraded to TanStack Table v8.19.3
-- Upgraded to TanStack Virtual v3.8.3
-- Fixed EditTextField to allow custom select props
-- converted `MRT_ColumnDef` and `MRT_TableOptions` types to interfaces to allow for declaration merging
 
 ### Version 2.13.0 - 2024-04-18
 
@@ -47,7 +18,6 @@ import { Typography, Link as MuiLink, Alert, AlertTitle } from '@mui/material';
 - Started using the default modal `z-index` value from the MUI theme for the full-screen table dialog to avoid issues with other modals and app bar components.
 - Disabled Edit Save Button when `isSaving` state is `true`
 - Fixed DatePicker Types generic
-- Added `el` locale for Greek translations
 
 ### Version 2.12.1 - 2024-02-28
 

@@ -56,12 +56,12 @@ export const MRT_TableContainer = <TData extends MRT_RowData>({
   useIsomorphicLayoutEffect(() => {
     const topToolbarHeight =
       typeof document !== 'undefined'
-        ? (topToolbarRef.current?.offsetHeight ?? 0)
+        ? topToolbarRef.current?.offsetHeight ?? 0
         : 0;
 
     const bottomToolbarHeight =
       typeof document !== 'undefined'
-        ? (bottomToolbarRef?.current?.offsetHeight ?? 0)
+        ? bottomToolbarRef?.current?.offsetHeight ?? 0
         : 0;
 
     setTotalToolbarHeight(topToolbarHeight + bottomToolbarHeight);
