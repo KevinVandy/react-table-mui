@@ -45,6 +45,7 @@ export const MRT_RowActionMenu = <TData extends MRT_RowData>({
     const editItem = parseFromValuesOrFunc(enableEditing, row) &&
       ['modal', 'row'].includes(editDisplayMode!) && (
         <MRT_ActionMenuItem
+          key={'edit'}
           icon={<EditIcon />}
           label={localization.edit}
           onClick={handleEdit}
