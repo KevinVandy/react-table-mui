@@ -81,6 +81,7 @@ export const cellKeyboardShortcuts = <TData extends MRT_RowData = MRT_RowData>({
   table: MRT_TableInstance<TData>;
 }) => {
   if (!table.options.enableKeyboardShortcuts) return;
+  if (event.isPropagationStopped()) return;
   const currentCell = event.currentTarget;
 
   if (cellValue && isWinCtrlMacMeta(event) && event.key === 'c') {
