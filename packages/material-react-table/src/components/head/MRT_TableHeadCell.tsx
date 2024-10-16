@@ -150,14 +150,13 @@ export const MRT_TableHeadCell = <TData extends MRT_RowData>({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTableCellElement>) => {
+    tableCellProps?.onKeyDown?.(event);
     cellKeyboardShortcuts({
       event,
       cellValue: header.column.columnDef.header,
       table,
       header,
     });
-
-    tableCellProps?.onKeyDown?.(event);
   };
 
   const HeaderElement =

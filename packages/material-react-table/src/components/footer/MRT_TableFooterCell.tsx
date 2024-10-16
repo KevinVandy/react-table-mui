@@ -49,12 +49,12 @@ export const MRT_TableFooterCell = <TData extends MRT_RowData>({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTableCellElement>) => {
+    tableCellProps?.onKeyDown?.(event);
     cellKeyboardShortcuts({
       event,
       cellValue: footer.column.columnDef.footer,
       table,
     });
-    tableCellProps?.onKeyDown?.(event);
   };
 
   return (
