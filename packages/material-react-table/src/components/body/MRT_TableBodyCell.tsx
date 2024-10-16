@@ -233,13 +233,13 @@ export const MRT_TableBodyCell = <TData extends MRT_RowData>({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTableCellElement>) => {
+    tableCellProps?.onKeyDown?.(event);
     cellKeyboardShortcuts({
       cell,
       cellValue: cell.getValue<string>(),
       event,
       table,
     });
-    tableCellProps?.onKeyDown?.(event);
   };
 
   return (
