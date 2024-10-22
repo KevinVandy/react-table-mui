@@ -10,10 +10,10 @@ export default meta;
 
 const data = [...Array(120)].map(() => ({
   arrivalTime: faker.date.recent(),
-  birthDate: faker.date.birthdate({ max: 2020, min: 1980 }),
+  birthDate: faker.date.birthdate({ max: 2020, min: 1980, mode: 'age' }),
   deliverySlot: faker.date.recent(),
   departureTime: faker.date.recent(),
-  hireDate: faker.date.birthdate({ max: 2024, min: 2011 }),
+  hireDate: faker.date.birthdate({ max: 2024, min: 2011, mode: 'age' }),
   startTime: faker.date.recent(),
 }));
 

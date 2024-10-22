@@ -459,11 +459,11 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
             multiple: isMultiSelectFilter,
             renderValue: isMultiSelectFilter
               ? (selected: any) =>
-                  !selected?.length ? (
+                  !Array.isArray(selected) || selected.length === 0 ? (
                     <Box sx={{ opacity: 0.5 }}>{filterPlaceholder}</Box>
                   ) : (
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>
-                      {(selected as string[])?.map((value) => {
+                      {selected.map((value: string) => {
                         const selectedValue = dropdownOptions?.find(
                           (option) => getValueAndLabel(option).value === value,
                         );
@@ -481,7 +481,13 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
           }}
           onChange={handleTextFieldChange}
           onClick={(e: MouseEvent<HTMLInputElement>) => e.stopPropagation()}
-          value={filterValue ?? ''}
+          value={
+            isMultiSelectFilter
+              ? Array.isArray(filterValue)
+                ? filterValue
+                : []
+              : ''
+          }
         >
           {(isSelectFilter || isMultiSelectFilter) && [
             <MenuItem disabled divider hidden key="p" value="">
