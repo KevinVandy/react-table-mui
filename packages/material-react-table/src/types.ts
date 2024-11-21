@@ -1196,7 +1196,7 @@ export interface MRT_TableOptions<TData extends MRT_RowData>
     row: MRT_Row<TData>;
     table: MRT_TableInstance<TData>;
     values: Record<LiteralUnion<string & DeepKeys<TData>>, any>;
-  }) => void;
+  }) => Promise<void> | void;
   onDensityChange?: OnChangeFn<MRT_DensityState>;
   onDraggingColumnChange?: OnChangeFn<MRT_Column<TData> | null>;
   onDraggingRowChange?: OnChangeFn<MRT_Row<TData> | null>;
