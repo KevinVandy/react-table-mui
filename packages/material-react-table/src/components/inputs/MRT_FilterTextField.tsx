@@ -486,7 +486,7 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
               ? Array.isArray(filterValue)
                 ? filterValue
                 : []
-              : ''
+              : filterValue
           }
         >
           {(isSelectFilter || isMultiSelectFilter) && [
