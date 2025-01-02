@@ -150,7 +150,7 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
   );
   const [autocompleteValue, setAutocompleteValue] =
     useState<DropdownOption | null>(
-      isAutocompleteFilter ? (filterValue as DropdownOption | null) : null,
+      () => isAutocompleteFilter ? ((column.getFilterValue() || null) as DropdownOption | null) : null,
     );
 
   const handleChangeDebounced = useCallback(
