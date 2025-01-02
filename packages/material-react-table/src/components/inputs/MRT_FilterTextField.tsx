@@ -1,12 +1,13 @@
 import {
   type ChangeEvent,
   type MouseEvent,
+  SyntheticEvent,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
-import Autocomplete from '@mui/material/Autocomplete';
+import Autocomplete, { AutocompleteInputChangeReason } from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import Chip from '@mui/material/Chip';
@@ -143,11 +144,13 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
         ? (column.getFilterValue() as [string, string])?.[
             rangeFilterIndex as number
           ] || ''
+        : isAutocompleteFilter 
+        ? typeof column.getFilterValue() === 'string' ? column.getFilterValue() as string : ''
         : ((column.getFilterValue() as string) ?? ''),
   );
   const [autocompleteValue, setAutocompleteValue] =
     useState<DropdownOption | null>(
-      isAutocompleteFilter ? (filterValue as DropdownOption | null) : null,
+      () => isAutocompleteFilter ? ((column.getFilterValue() || null) as DropdownOption | null) : null,
     );
 
   const handleChangeDebounced = useCallback(
@@ -184,9 +187,13 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
     textFieldProps?.onChange?.(event);
   };
 
+  const handleAutocompleteInputChange = (_event: SyntheticEvent, newValue: string, _reason: AutocompleteInputChangeReason) => {
+    handleChange(newValue)
+  };
+
   const handleAutocompleteChange = (newValue: DropdownOption | null) => {
     setAutocompleteValue(newValue);
-    handleChange(getValueAndLabel(newValue).value);
+    handleChangeDebounced(getValueAndLabel(newValue).value);
   };
 
   const handleClear = () => {
@@ -200,6 +207,12 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
         newFilterValues[rangeFilterIndex as number] = undefined;
         return newFilterValues;
       });
+    } else if (isAutocompleteFilter) {
+      setAutocompleteValue(null)
+      setFilterValue('')
+      // when using 'autocomplete' this function is called only inside effect and only if the filterValue === undefined
+      // so the following call is excessive; should be uncommented if the handleClear becomes part of the Autocomplete component callbacks
+      // column.setFilterValue(undefined)
     } else {
       setFilterValue('');
       column.setFilterValue(undefined);
@@ -434,6 +447,8 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
           options={
             dropdownOptions?.map((option) => getValueAndLabel(option)) ?? []
           }
+          inputValue={filterValue as string}
+          onInputChange={handleAutocompleteInputChange}
           {...autocompleteProps}
           renderInput={(builtinTextFieldProps: TextFieldProps) => (
             <TextField
@@ -455,7 +470,6 @@ export const MRT_FilterTextField = <TData extends MRT_RowData>({
                   ...commonTextFieldProps?.slotProps?.htmlInput,
                 },
               }}
-              onChange={handleTextFieldChange}
               onClick={(e: MouseEvent<HTMLInputElement>) => e.stopPropagation()}
             />
           )}
