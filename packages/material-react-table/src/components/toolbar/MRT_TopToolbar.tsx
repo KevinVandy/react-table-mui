@@ -22,6 +22,7 @@ export const MRT_TopToolbar = <TData extends MRT_RowData>({
     options: {
       enableGlobalFilter,
       enablePagination,
+      enableTopContent,
       enableToolbarInternalActions,
       muiTopToolbarProps,
       positionGlobalFilter,
@@ -66,9 +67,11 @@ export const MRT_TopToolbar = <TData extends MRT_RowData>({
       }}
       sx={(theme) => ({
         ...getCommonToolbarStyles({ table, theme }),
-        position: isFullScreen ? 'sticky' : 'relative',
-        top: isFullScreen ? '0' : undefined,
+        position: isFullScreen || enableTopContent ? 'sticky' : 'relative',
+        top: isFullScreen || enableTopContent ? '0' : undefined,
         ...(parseFromValuesOrFunc(toolbarProps?.sx, theme) as any),
+        insetInlineStart: enableTopContent ? 0 : undefined,
+        zIndex: enableTopContent ? 3 : undefined,
       })}
     >
       {positionToolbarAlertBanner === 'top' && (
