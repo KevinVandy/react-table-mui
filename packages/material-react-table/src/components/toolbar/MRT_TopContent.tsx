@@ -11,7 +11,7 @@ export const MRT_TopContent = <TData extends MRT_RowData>({
   table,
 }: MRT_TopContentProps<TData>) => {
   const {
-    options: { renderTopContent },
+    options: { renderTopContent, enableTopToolbar },
   } = table;
   return (
     <>
@@ -23,7 +23,7 @@ export const MRT_TopContent = <TData extends MRT_RowData>({
       >
         {parseFromValuesOrFunc(renderTopContent, { table })}
       </Box>
-      <MRT_TopToolbar table={table} />
+      {enableTopToolbar && <MRT_TopToolbar table={table} />}
     </>
   );
 };

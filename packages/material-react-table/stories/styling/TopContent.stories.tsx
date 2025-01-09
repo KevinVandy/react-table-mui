@@ -45,7 +45,7 @@ const data = [...Array(88)].map(() => ({
   state: faker.location.state(),
 }));
 
-export const TopContentWithStaticHeader = () => (
+export const TopContentWithStaticHeaderDefault = () => (
   <MaterialReactTable
     columns={columns}
     data={data}
@@ -87,6 +87,25 @@ export const TopContentWithStickyHeaderShorterTable = () => (
     enableStickyHeader
     initialState={{ pagination: { pageIndex: 0, pageSize: 25 } }}
     muiTableContainerProps={{ sx: { maxHeight: 400 } }}
+    enableTopContent={true}
+    renderTopContent={({ table }) => (
+      <Paper elevation={3} sx={{ padding: '0.5rem', margin: '0.5rem' }}>
+        <h2 style={{ margin: '2rem', textAlign: 'center' }}>
+          Total rows: {table.getRowCount()}
+        </h2>
+      </Paper>
+    )}
+  />
+);
+
+export const TopContentWithHiddenTopToolbar = () => (
+  <MaterialReactTable
+    columns={columns}
+    data={data}
+    initialState={{ pagination: { pageIndex: 0, pageSize: 25 } }}
+    muiTableContainerProps={{ sx: { maxHeight: 400 } }}
+    enableStickyHeader
+    enableTopToolbar={false}
     enableTopContent={true}
     renderTopContent={({ table }) => (
       <Paper elevation={3} sx={{ padding: '0.5rem', margin: '0.5rem' }}>
