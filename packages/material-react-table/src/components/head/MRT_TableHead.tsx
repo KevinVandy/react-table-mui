@@ -25,6 +25,7 @@ export const MRT_TableHead = <TData extends MRT_RowData>({
     options: {
       enableStickyHeader,
       enableTopContent,
+      enableTopToolbar,
       layoutMode,
       muiTableHeadProps,
       positionToolbarAlertBanner,
@@ -57,7 +58,7 @@ export const MRT_TableHead = <TData extends MRT_RowData>({
         top:
           stickyHeader && layoutMode?.startsWith('grid')
             ? 0
-            : enableStickyHeader && enableTopContent
+            : enableStickyHeader && enableTopContent && enableTopToolbar
               ? getCommonToolbarStyles({ table, theme }).minHeight
               : undefined,
         zIndex: stickyHeader ? 2 : undefined,
