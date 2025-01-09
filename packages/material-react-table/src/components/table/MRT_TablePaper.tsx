@@ -19,6 +19,7 @@ export const MRT_TablePaper = <TData extends MRT_RowData>({
     getState,
     options: {
       enableBottomToolbar,
+      enableTopContent,
       enableTopToolbar,
       mrtTheme: { baseBackgroundColor },
       muiTablePaperProps,
@@ -76,6 +77,7 @@ export const MRT_TablePaper = <TData extends MRT_RowData>({
       })}
     >
       {enableTopToolbar &&
+        !enableTopContent &&
         (parseFromValuesOrFunc(renderTopToolbar, { table }) ?? (
           <MRT_TopToolbar table={table} />
         ))}

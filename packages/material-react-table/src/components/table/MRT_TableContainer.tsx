@@ -8,6 +8,7 @@ import { type MRT_RowData, type MRT_TableInstance } from '../../types';
 import { parseFromValuesOrFunc } from '../../utils/utils';
 import { MRT_CellActionMenu } from '../menus/MRT_CellActionMenu';
 import { MRT_EditRowModal } from '../modals/MRT_EditRowModal';
+import { MRT_TopContent } from '../toolbar/MRT_TopContent';
 
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
@@ -29,6 +30,7 @@ export const MRT_TableContainer = <TData extends MRT_RowData>({
       enableCellActions,
       enableStickyHeader,
       muiTableContainerProps,
+      enableTopContent,
     },
     refs: { bottomToolbarRef, tableContainerRef, topToolbarRef },
   } = table;
@@ -101,6 +103,7 @@ export const MRT_TableContainer = <TData extends MRT_RowData>({
       })}
     >
       {loading ? <MRT_TableLoadingOverlay table={table} /> : null}
+      {enableTopContent ? <MRT_TopContent table={table} /> : null}
       <MRT_Table table={table} />
       {(createModalOpen || editModalOpen) && (
         <MRT_EditRowModal open table={table} />
