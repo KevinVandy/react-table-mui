@@ -883,6 +883,7 @@ export interface MRT_TableOptions<TData extends MRT_RowData>
   enableTableFooter?: boolean;
   enableTableHead?: boolean;
   enableToolbarInternalActions?: boolean;
+  enableTopContent?: boolean;
   enableTopToolbar?: boolean;
   expandRowsFn?: (dataRow: TData) => TData[];
   getRowId?: (
@@ -1258,6 +1259,9 @@ export interface MRT_TableOptions<TData extends MRT_RowData>
   renderToolbarInternalActions?: (props: {
     table: MRT_TableInstance<TData>;
   }) => ReactNode;
+  renderTopContent?:
+    | ((props: { table: MRT_TableInstance<TData> }) => ReactNode)
+    | ReactNode;
   renderTopToolbar?:
     | ((props: { table: MRT_TableInstance<TData> }) => ReactNode)
     | ReactNode;
