@@ -7,6 +7,7 @@ import {
 } from '../../types';
 import { parseFromValuesOrFunc } from '../../utils/utils';
 import { MRT_ToolbarAlertBanner } from '../toolbar/MRT_ToolbarAlertBanner';
+import { getCommonToolbarStyles } from '../../utils/style.utils';
 
 export interface MRT_TableHeadProps<TData extends MRT_RowData>
   extends TableHeadProps {
@@ -23,6 +24,8 @@ export const MRT_TableHead = <TData extends MRT_RowData>({
     getState,
     options: {
       enableStickyHeader,
+      enableTopContent,
+      enableTopToolbar,
       layoutMode,
       muiTableHeadProps,
       positionToolbarAlertBanner,
@@ -52,7 +55,12 @@ export const MRT_TableHead = <TData extends MRT_RowData>({
         display: layoutMode?.startsWith('grid') ? 'grid' : undefined,
         opacity: 0.97,
         position: stickyHeader ? 'sticky' : 'relative',
-        top: stickyHeader && layoutMode?.startsWith('grid') ? 0 : undefined,
+        top:
+          stickyHeader && layoutMode?.startsWith('grid')
+            ? 0
+            : enableStickyHeader && enableTopContent && enableTopToolbar
+              ? getCommonToolbarStyles({ table, theme }).minHeight
+              : undefined,
         zIndex: stickyHeader ? 2 : undefined,
         ...(parseFromValuesOrFunc(tableHeadProps?.sx, theme) as any),
       })}
