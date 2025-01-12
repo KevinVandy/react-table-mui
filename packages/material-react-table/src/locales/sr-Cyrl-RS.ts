@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_SR_CYRL_RS: MRT_Localization = {
+  language: 'sr-Cyrl-RS',
   actions: 'Акције',
   and: 'и',
   cancel: 'Откажи',

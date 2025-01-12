@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_NP: MRT_Localization = {
+  language: 'np',
   actions: 'कार्यहरू',
   and: 'तथा',
   cancel: 'रद्द गर्नुहोस्',

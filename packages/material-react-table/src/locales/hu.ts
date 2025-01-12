@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_HU: MRT_Localization = {
+  language: 'hu',
   actions: 'Műveletek',
   and: 'és',
   cancel: 'Mégse',

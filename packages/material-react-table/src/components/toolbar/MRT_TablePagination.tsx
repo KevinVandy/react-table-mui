@@ -174,10 +174,12 @@ export const MRT_TablePagination = <TData extends MRT_RowData>({
             sx={{ m: '0 4px', minWidth: '8ch' }}
             variant="body2"
           >{`${
-            lastRowIndex === 0 ? 0 : (firstRowIndex + 1).toLocaleString()
-          }-${lastRowIndex.toLocaleString()} ${
+            lastRowIndex === 0
+              ? 0
+              : (firstRowIndex + 1).toLocaleString(localization.language)
+          }-${lastRowIndex.toLocaleString(localization.language)} ${
             localization.of
-          } ${totalRowCount.toLocaleString()}`}</Typography>
+          } ${totalRowCount.toLocaleString(localization.language)}`}</Typography>
           <Box gap="xs">
             {showFirstButton && (
               <Tooltip {...tooltipProps} title={localization.goToFirstPage}>

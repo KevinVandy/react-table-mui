@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_FR: MRT_Localization = {
+  language: 'fr',
   actions: 'Actions',
   and: 'et',
   cancel: 'Annuler',

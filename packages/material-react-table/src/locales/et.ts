@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_ET: MRT_Localization = {
+  language: 'et',
   actions: 'Toimingud',
   and: 'ja',
   cancel: 'Tühista',

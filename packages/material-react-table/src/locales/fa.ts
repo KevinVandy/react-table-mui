@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_FA: MRT_Localization = {
+  language: 'fa',
   actions: 'عملیات',
   and: 'و',
   cancel: 'انصراف',

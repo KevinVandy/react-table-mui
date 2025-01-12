@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_HY: MRT_Localization = {
+  language: 'hy',
   actions: 'Գործողություններ',
   and: 'և',
   cancel: 'Չեղարկել',

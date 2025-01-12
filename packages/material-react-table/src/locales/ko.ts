@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_KO: MRT_Localization = {
+  language: 'ko',
   actions: '동작',
   and: '~',
   cancel: '취소',

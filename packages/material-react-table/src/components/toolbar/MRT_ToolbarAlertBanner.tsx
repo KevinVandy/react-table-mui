@@ -65,8 +65,8 @@ export const MRT_ToolbarAlertBanner = <TData extends MRT_RowData>({
     selectedRowCount > 0 ? (
       <Stack alignItems="center" direction="row" gap="16px">
         {localization.selectedCountOfRowCountRowsSelected
-          ?.replace('{selectedCount}', selectedRowCount.toLocaleString())
-          ?.replace('{rowCount}', totalRowCount.toString())}
+          ?.replace('{selectedCount}', selectedRowCount.toLocaleString(localization.language))
+          ?.replace('{rowCount}', totalRowCount.toLocaleString(localization.language))}
         <Button
           onClick={(event) =>
             getMRT_SelectAllHandler({ table })(event, false, true)

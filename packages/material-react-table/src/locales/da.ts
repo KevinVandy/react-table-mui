@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_DA: MRT_Localization = {
+  language: 'da',
   actions: 'Handlinger',
   and: 'og',
   cancel: 'Annuller',

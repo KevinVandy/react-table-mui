@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_FI: MRT_Localization = {
+  language: 'fi',
   actions: 'Toiminnot',
   and: 'ja',
   cancel: 'Peruuta',

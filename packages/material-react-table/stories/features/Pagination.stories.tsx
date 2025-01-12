@@ -78,6 +78,25 @@ export const PaginationEnabledDefaultBigData = () => (
   />
 );
 
+export const PaginationEnabledDefaultBigDataLanguage = () => (
+  <MaterialReactTable
+    columns={columns}
+    data={bigData}
+    enableRowVirtualization
+    localization={{
+      language: navigator.language.startsWith('de') ? 'en' : 'de',
+    }}
+    enableRowSelection
+    initialState={{ pagination: { pageIndex: 0, pageSize: 1000 } }}
+    muiPaginationProps={{ rowsPerPageOptions: [100, 1000] }}
+    muiTableContainerProps={{
+      sx: {
+        height: '600px',
+      },
+    }}
+  />
+);
+
 export const PaginationEnabledDefaultNoRowsPerPage = () => (
   <MaterialReactTable
     columns={columns}

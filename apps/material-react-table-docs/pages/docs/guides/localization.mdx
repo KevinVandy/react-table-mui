@@ -44,6 +44,7 @@ const table = useMaterialReactTable({
   columns,
   data,
   localization: {
+    language: 'pt', // BCP 47 language tag for number formatting
     actions: 'Ações',
     and: 'e',
     cancel: 'Cancelar',
@@ -60,6 +61,7 @@ const table = useMaterialReactTable({
 return <MaterialReactTable table={table} />;
 ```
 
-For a full list of all available translation keys, see [here](https://github.com/KevinVandy/material-react-table/blob/v3/packages/material-react-table/src/locales/en.ts)
+For a full list of all available translation keys, see [here](https://github.com/KevinVandy/material-react-table/blob/v3/packages/material-react-table/src/locales/en.ts).
+Please note that each localization object should include a `language` property containing a valid BCP 47 language tag to ensure proper number formatting.
 
 If you end up fully translating MRT into another language that is not yet supported, please consider making a PR to add it to the library so that everyone can use it!

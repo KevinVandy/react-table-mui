@@ -150,6 +150,8 @@ export type MRT_ColumnHelper<TData extends MRT_RowData> = {
 };
 
 export interface MRT_Localization {
+  // language of the localization as BCP 47 language tag for number formatting
+  language: string;
   actions: string;
   and: string;
   cancel: string;

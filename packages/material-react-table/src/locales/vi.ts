@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_VI: MRT_Localization = {
+  language: 'vi',
   actions: 'Thao tác',
   and: 'và',
   cancel: 'Huỷ bỏ',

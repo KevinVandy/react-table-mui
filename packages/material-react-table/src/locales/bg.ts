@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_BG: MRT_Localization = {
+  language: 'bg',
   actions: 'Действия',
   and: 'и',
   cancel: 'Отказ',

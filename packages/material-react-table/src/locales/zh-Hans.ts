@@ -1,6 +1,7 @@
 import { type MRT_Localization } from '..';
 
 export const MRT_Localization_ZH_HANS: MRT_Localization = {
+  language: 'zh-Hans',
   actions: '操作',
   and: '与',
   cancel: '取消',
